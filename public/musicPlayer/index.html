@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html5 音乐播放器</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script data-main="./js/page/index" src="./js/require.js"></script>
+</head>
+<body>
+    <div id="container">
+        <div class="pageheart">
+            <div id="head">
+                <div class="turntable">
+                    <div class="discs">
+                        <div>
+                            <img src="images/cd.png" alt="">
+                        </div>
+                        <div id="artists">
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                    <div class="arm">
+                        <img src="images/cd_tou.png" alt="">
+                    </div>
+                </div>
+                <div id="player">
+                    <h1></h1>
+                    <p>
+                        <span class="author"></span> <span class="album"></span>
+                    </p>
+                    <div class="player">
+                        <div class="controls clear">
+                            <div>
+                                <i class="iconfont prev iactive">&#xe60d;</i>
+                                <i class="iconfont play iactive">&#xe622;</i>
+                                <i class="iconfont next iactive">&#xe60e;</i>
+                            </div>
+                            <div>
+                                <i class="iconfont random iactive">&#xe505;</i>
+                                <i class="iconfont refresh iactive">&#xe711;</i>
+                                <i class="iconfont volume iactive">&#xe506;</i>
+                                <span id="volumeCon">
+                                    <span id="volbar">
+                                        <i id="drag" class="iconfont">&#xe62d;</i>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="progress">
+                            <span class="currentTime">00:00/00:00</span>
+                            <div class="playPgbar">
+                                <div class="playPg"></div>
+                            </div>
+                        </div>
+                        <audio id="audio" src=""></audio>
+                    </div>
+                </div>
+            </div>
+            <div id="menu">
+                <p>
+                    <span>推荐</span>
+                    <i class="iconfont remusic iactive">&#xe745;</i>
+                </p>
+                <ul></ul>
+            </div>
+        </div>
+    </div>
+    <div id="sidebar">
+        <div id="sbcontent">
+            <div class="sbsearch">
+                <div class="sbsform">
+                    <i class="iconfont">&#xe854;</i>
+                    <input class="searchvalue" type="text" placeholder="请输入歌曲名">
+                </div>
+            </div>
+            <div class="sbmenu">
+                <div class="sbmleft">
+                    <ul>
+                        <li title="热门歌手"><i class="iconfont">&#xf0089;</i></li>
+                        <li title="精品歌单 "><i class="iconfont">&#xe61d;</i></li>
+                        <li title="新歌榜"><i class="iconfont">&#xe66f;</i></li>
+                        <li title="热歌榜"><i class="iconfont">&#xe639;</i></li>
+                        <li title="美国Billboard周榜"><i class="iconfont">&#xe627;</i></li>
+                        <li title="MV排行榜"><i class="iconfont">&#xe6ca;</i></li>
+                    </ul>
+                </div>
+                <div class="sbmright">
+                    <ul id="sbmright"></ul>
+                    <!-- 侧边滚动条 -->
+                    <div id="scrollbar">
+                        <span id="sbar"></span>
+                    </div>
+                </div>
+                <!-- 搜索结果&歌手&歌单结果  -->
+                <div class="maskresult">
+                    <div class="mrhead">
+                        <i class="iconfont mrexit">&#xe626;</i>
+                    </div>
+                    <div class="mrcontent">
+                        <ul id="mrcontent"></ul>
+                        <!-- 侧边滚动条 -->
+                        <div id="mrscrollbar">
+                            <span id="mrsbar"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fold">
+            <i class="iconfont">&#xe601;</i>
+        </div>
+    </div>
+    <!-- 视频播放器 -->
+    <div id="mvmask">
+        <div id="videobox">
+            <video autoplay id="video"></video>
+            <div id="vcontrols">
+                <div class="vplay"><i class="iconfont">&#xe6fa;</i></div>
+                <div class="vprogress">
+                    <span class="vtimebox">00:00/00:00</span>
+                    <span class="vprobarbox">
+                        <span class="vprobar">
+                            <span class="nowvbar"></span>
+                        </span>
+                    </span>
+                    <i class="iconfont full">&#xe657;</i>
+                </div>
+                <div class="vvolume">
+                    <i class="iconfont">&#xe506;</i>
+                    <span class="vvolumebarbox">
+                        <span class="vvolumebar">
+                            <i id="vdrag" class="iconfont">&#xe62d;</i>
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--html结构模板-->
+
+    <!--首页推荐菜单-->
+    <script id="menutem" type="text/html">
+        <%for(var i=0; i<data.length; i++){%>
+        <li class="itembox" data-id="<%=data[i].id%>" title="歌曲：<%=data[i].name%>&nbsp;&nbsp;&nbsp;作者：<%=data[i].artists[0].name%>&nbsp;&nbsp;&nbsp;专辑：<%=data[i].album.name%>">
+            <p><%=data[i].name%></p>
+            <p><span><%=data[i].artists[0].name%></span>&nbsp;<span>专辑：<%=data[i].album.name%></span></p>
+            <span class="itemboxid"><%=data[i].id%></span>
+        </li>
+        <%}%>
+    </script>
+    <!-- 右侧菜单模板 -->
+    <!-- 热门歌手&精品歌单&歌曲榜单 -->
+    <script id="menuright" type="text/html"> 
+        <%for(var i=0; i<data.length; i++){%>
+        <li data-id="<%=data[i].id%>">
+            <span><%=i+1%></span>
+            <span><%=data[i].name%></span>
+        </li>
+        <%}%>
+    </script>
+    <!-- 搜索歌曲模板 -->
+    <script id="searchtem" type="text/html"> 
+        <%for(var i=0; i<data.length; i++){%>
+        <li data-id="<%=data[i].id%>" title="<%=data[i].name%>&nbsp;&nbsp;歌手：<%=data[i].artists[0].name%>&nbsp;&nbsp;专辑：<%=data[i].album.name%>"> 
+            <span><%=i+1%></span>
+            <span><%=data[i].name%></span>
+            <span><%=data[i].artists[0].name%></span>
+            <span><%=data[i].album.name%></span>
+        </li>
+        <%}%>
+    </script>
+    <!-- 歌单模板 -->
+    <script id="playlisttem" type="text/html">
+        <%for(var i=0; i<data.length; i++){%>
+        <li data-id="<%=data[i].id%>" title="<%=data[i].name%>&nbsp;&nbsp;歌手：<%=data[i].ar[0].name%>&nbsp;&nbsp;专辑：<%=data[i].al.name%>"> 
+            <span><%=i+1%></span>
+            <span><%=data[i].name%></span>
+            <span><%=data[i].ar[0].name%></span>
+            <span><%=data[i].al.name%></span>
+        </li>
+        <%}%>
+    </script>
+</body>
+</html>

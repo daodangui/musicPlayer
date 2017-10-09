@@ -1,0 +1,616 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-weight: normal;
+  font-size: 45px;
+  margin: 35px 0px;
+}
+
+i {
+  font-style: normal;
+}
+
+li {
+  list-style: none;
+}
+
+.clear:after {
+  content: '';
+  display: inline-block;
+  clear: both;
+}
+
+.iactive:active {
+  color: #333333;
+}
+
+@font-face {
+  font-family: 'iconfont';
+  src: url("../font/iconfont.eot");
+  src: url("../font/iconfont.eot?#iefix") format("embedded-opentype"), url("../font/iconfont.woff") format("woff"), url("../font/iconfont.ttf") format("truetype"), url("../font/iconfont.svg#iconfont") format("svg");
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to left, #bc24b7 30%, #781fa3 50%, #5621b8 80%);
+  overflow: hidden;
+  color: white;
+}
+
+.pageheart {
+  width: 980px;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+.pageheart > div {
+  width: 100%;
+}
+.pageheart #head {
+  height: 540px;
+  display: flex;
+  flex-flow: row nowrap;
+}
+.pageheart #head > div {
+  width: 50%;
+  height: 100%;
+}
+.pageheart #head .turntable {
+  position: relative;
+}
+.pageheart #head .turntable .discs {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  margin: auto 0px;
+  display: inline-block;
+  width: 376px;
+  height: 376px;
+}
+.pageheart #head .turntable .discs div:first-child img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0px 0px 25px #111;
+}
+.pageheart #head .turntable .discs div:last-child {
+  position: absolute;
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  margin: auto;
+}
+.pageheart #head .turntable .discs div:last-child img {
+  width: 200px;
+  height: 200px;
+}
+.pageheart #head .turntable .arm {
+  position: absolute;
+  right: 80px;
+  top: 80px;
+  transform-origin: 75% 10%;
+  transform: rotate(-30deg);
+  transition: transform 1s ease 0s;
+}
+.pageheart #head #player {
+  position: relative;
+  text-align: center;
+  padding-top: 160px;
+}
+.pageheart #head #player h1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pageheart #head #player .author {
+  font-size: 24px;
+  margin-right: 5px;
+}
+.pageheart #head #player .album {
+  font-size: 18px;
+}
+.pageheart #head #player .player {
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 360px;
+}
+.pageheart #head #player .player .controls i {
+  font-size: 26px;
+  cursor: pointer;
+  user-select: none;
+}
+.pageheart #head #player .player .controls > div:first-child {
+  float: left;
+}
+.pageheart #head #player .player .controls > div:first-child i {
+  margin-right: 10px;
+}
+.pageheart #head #player .player .controls > div:last-child {
+  position: relative;
+  float: right;
+}
+.pageheart #head #player .player .controls > div:last-child i {
+  margin-left: 10px;
+}
+.pageheart #head #player .player .controls > div:last-child #volumeCon {
+  display: none;
+  width: 20px;
+  height: 80px;
+  position: absolute;
+  background: #292928;
+  right: 3px;
+  bottom: 28px;
+  border-radius: 10px;
+}
+.pageheart #head #player .player .controls > div:last-child #volumeCon #volbar {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  width: 3px;
+  background: linear-gradient(to top, #bc24b7 0%, #bc24b7 50%, #999 50%, #999 100%);
+  height: 64px;
+  border-radius: 3px;
+  text-align: center;
+}
+.pageheart #head #player .player .controls > div:last-child #volumeCon #volbar #drag {
+  position: absolute;
+  font-size: 10px;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  top: 30px;
+  color: white;
+}
+.pageheart #head #player .player .controls > div:last-child #volumeCon #volbar #drag:active {
+  color: #FF0066;
+}
+.pageheart #head #player .player .progress {
+  overflow: hidden;
+  margin-top: 14px;
+}
+.pageheart #head #player .player .progress > div {
+  display: inline-block;
+  width: 280px;
+  height: 5px;
+  border-radius: 2px;
+  background: #4c0f50;
+  float: right;
+  position: relative;
+  top: 7px;
+  cursor: pointer;
+}
+.pageheart #head #player .player .progress > div > div {
+  height: 100%;
+  width: 0px;
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 0px 0px 5px yellow;
+}
+.pageheart #head #player .player .progress span {
+  float: left;
+  font-size: 12px;
+}
+.pageheart #menu {
+  width: 100%;
+  height: 225px;
+}
+.pageheart #menu > p {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+.pageheart #menu > p > span {
+  font-size: 14px;
+  display: inline-block;
+  width: 346px;
+  text-align: left;
+}
+.pageheart #menu > p > i {
+  display: inline-block;
+  width: 364px;
+  text-align: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+.pageheart #menu ul {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.pageheart #menu ul li {
+  width: 173px;
+  height: 85px;
+  border-radius: 10px;
+  margin: 10px;
+  text-align: center;
+  box-shadow: 1px 1px 2px #333;
+  cursor: pointer;
+  padding: 0px 10px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.2) 40%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.1) 100%);
+}
+.pageheart #menu ul li p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pageheart #menu ul li > p:first-child {
+  font-size: 18px;
+  margin-top: 19px;
+  margin-bottom: 4px;
+}
+.pageheart #menu ul li > p:last-child span:first-child {
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+.pageheart #menu ul li > p:last-child span:last-child {
+  font-size: 12px;
+}
+.pageheart #menu ul li > span {
+  display: none;
+}
+
+#sidebar {
+  width: 350px;
+  height: 100%;
+  background: rgba(49, 58, 67, 0.9);
+  position: absolute;
+  left: -350px;
+  top: 0px;
+}
+#sidebar i {
+  color: white;
+}
+#sidebar #sbcontent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+}
+#sidebar #sbcontent .sbsearch {
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid #444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#sidebar #sbcontent .sbsearch .sbsform {
+  width: 80%;
+  height: 70%;
+  display: flex;
+  flex-flow: row nowrap;
+}
+#sidebar #sbcontent .sbsearch .sbsform i {
+  font-size: 30px;
+  display: inline-block;
+  height: 100%;
+  text-align: center;
+  width: 40px;
+  line-height: 40px;
+}
+#sidebar #sbcontent .sbsearch .sbsform input {
+  box-sizing: border-box;
+  height: 100%;
+  vertical-align: top;
+  outline: none;
+  color: white;
+  border: 0px;
+  background-color: transparent;
+  flex: 1;
+  padding-left: 15px;
+}
+#sidebar #sbcontent .sbmenu {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-flow: row nowrap;
+}
+#sidebar #sbcontent .sbmenu .sbmleft {
+  width: 50px;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+#sidebar #sbcontent .sbmenu .sbmleft > ul {
+  width: 100%;
+}
+#sidebar #sbcontent .sbmenu .sbmleft > ul li {
+  text-align: center;
+  line-height: 50px;
+  height: 50px;
+  user-select: none;
+  cursor: pointer;
+}
+#sidebar #sbcontent .sbmenu .sbmleft > ul li i {
+  font-size: 30px;
+}
+#sidebar #sbcontent .sbmenu .sbmleft > ul li:nth-child(1) {
+  background-color: #CC0066;
+}
+#sidebar #sbcontent .sbmenu .sbmleft > ul li:nth-child(2) {
+  background-color: #0099FF;
+}
+#sidebar #sbcontent .sbmenu .sbmleft > ul li:nth-child(3) {
+  background-color: #9933CC;
+}
+#sidebar #sbcontent .sbmenu .sbmleft > ul li:nth-child(4) {
+  background-color: #66CC33;
+}
+#sidebar #sbcontent .sbmenu .sbmleft > ul li:nth-child(5) {
+  background-color: #FF9933;
+}
+#sidebar #sbcontent .sbmenu .sbmleft > ul li:nth-child(6) {
+  background-color: #FF33FF;
+}
+#sidebar #sbcontent .sbmenu .sbmright {
+  flex: 1;
+  height: 100%;
+  background-color: rgba(40, 49, 58, 0.9);
+  overflow: hidden;
+  position: relative;
+}
+#sidebar #sbcontent .sbmenu .sbmright ul {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+#sidebar #sbcontent .sbmenu .sbmright ul li {
+  box-sizing: border-box;
+  padding: 0px 15px;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  font-size: 13px;
+  border-bottom: 1px solid #444;
+  white-space: nowrap;
+  overflow: hidden;
+  text-voerflow: ellipsis;
+  cursor: pointer;
+}
+#sidebar #sbcontent .sbmenu .sbmright ul li:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+#sidebar #sbcontent .sbmenu .sbmright ul li > span:first-child {
+  margin-right: 15px;
+}
+#sidebar #sbcontent .sbmenu .maskresult {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 500;
+  background-color: #28313a;
+  padding: 10px;
+  overflow: hidden;
+  display: none;
+  flex-flow: column nowrap;
+}
+#sidebar #sbcontent .sbmenu .maskresult .mrhead {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+}
+#sidebar #sbcontent .sbmenu .maskresult .mrhead i {
+  font-size: 20px;
+  cursor: pointer;
+}
+#sidebar #sbcontent .sbmenu .maskresult .mrcontent {
+  width: 100%;
+  flex: 1;
+  overflow: hidden;
+}
+#sidebar #sbcontent .sbmenu .maskresult .mrcontent ul {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+#sidebar #sbcontent .sbmenu .maskresult .mrcontent ul li {
+  width: 100%;
+  height: 30px;
+  border-bottom: 1px solid #444;
+  line-height: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  font-size: 12px;
+}
+#sidebar #sbcontent .sbmenu .maskresult .mrcontent ul li:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+#sidebar #sbcontent .sbmenu .maskresult .mrcontent ul li span {
+  margin-right: 10px;
+}
+#sidebar .fold {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 0px;
+  bottom: 0px;
+  margin: auto;
+  right: -24px;
+  cursor: pointer;
+  user-select: none;
+}
+#sidebar .fold i {
+  font-size: 25px;
+}
+#sidebar .fold i:active {
+  color: #333;
+}
+
+#scrollbar, #mrscrollbar {
+  height: 98%;
+  width: 8px;
+  background-color: #333333;
+  position: absolute;
+  top: 1%;
+  right: 3px;
+  border-radius: 10px;
+}
+
+#scrollbar span, #mrscrollbar span {
+  width: 8px;
+  height: 50px;
+  background-color: #eee;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: 10px;
+}
+
+#mvmask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+  left: 0px;
+  top: 0px;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+#mvmask #videobox {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+#mvmask #videobox #vcontrols > div {
+  position: absolute;
+}
+#mvmask #videobox #vcontrols .vplay {
+  width: 30px;
+  height: 30px;
+  top: 0px;
+  bottom: 0px;
+  margin: auto 0px;
+  left: -30px;
+  cursor: pointer;
+  user-select: none;
+}
+#mvmask #videobox #vcontrols .vplay i {
+  font-size: 30px;
+}
+#mvmask #videobox #vcontrols .vvolume {
+  width: 30px;
+  height: 30px;
+  top: 0px;
+  bottom: 0px;
+  margin: auto 0px;
+  right: -30px;
+  cursor: pointer;
+  user-select: none;
+}
+#mvmask #videobox #vcontrols .vvolume > i {
+  font-size: 30px;
+}
+#mvmask #videobox #vcontrols .vvolume .vvolumebarbox {
+  position: absolute;
+  right: 9px;
+  bottom: 30px;
+  width: 15px;
+  height: 70px;
+  border-radius: 8px;
+  background-color: white;
+}
+#mvmask #videobox #vcontrols .vvolume .vvolumebarbox .vvolumebar {
+  width: 3px;
+  height: 80%;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  border-radius: 3px;
+  background: linear-gradient(to top, #bc24b7 0%, #bc24b7 50%, #666 50%, #666 100%);
+}
+#mvmask #videobox #vcontrols .vvolume .vvolumebarbox .vvolumebar > i {
+  font-size: 10px;
+  color: #663300;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 25px;
+  right: -3.5px;
+}
+#mvmask #videobox #vcontrols .vprogress {
+  width: 100%;
+  bottom: -40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 13px;
+  user-select: none;
+  display: flex;
+}
+#mvmask #videobox #vcontrols .vprogress .vtimebox {
+  display: flex;
+  justify-content: center;
+  width: 100px;
+}
+#mvmask #videobox #vcontrols .vprogress .vprobarbox {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+#mvmask #videobox #vcontrols .vprogress .vprobarbox .vprobar {
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;
+  background-color: white;
+  position: relative;
+  cursor: pointer;
+}
+#mvmask #videobox #vcontrols .vprogress .vprobarbox .vprobar .nowvbar {
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 0px;
+  border-radius: 5px;
+  background-color: #CC00CC;
+  box-shadow: 0px 0px 5px yellow;
+}
+#mvmask #videobox #vcontrols .vprogress .full {
+  display: flex;
+  justify-content: center;
+  width: 50px;
+  font-size: 18px;
+  cursor: pointer;
+  color: white;
+}
+
+@keyframes turntable {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
