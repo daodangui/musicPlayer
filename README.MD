@@ -2,4 +2,4 @@
 
 > 数据接口部分采用 github上的开源项目   [NeteaseCloudMusicApi(网易云音乐 API)](https://github.com/Binaryify/NeteaseCloudMusicApi#网易云音乐-api)
 
-> 地址：[lijiahui.top:3000/musicPlayer](lijiahui.top:3000/musicPlayer)
+> 地址：[lijiahui.top:3000/musicPlayer](http://lijiahui.top:3000/musicPlayer)
