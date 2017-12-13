@@ -36,6 +36,9 @@
                                 <i class="iconfont next iactive">&#xe60e;</i>
                             </div>
                             <div>
+                                <i class="iconfont lyric iactive">&#xe769;</i>
+                            </div>
+                            <div>
                                 <i class="iconfont random iactive">&#xe505;</i>
                                 <i class="iconfont refresh iactive">&#xe711;</i>
                                 <i class="iconfont volume iactive">&#xe506;</i>
@@ -136,8 +139,24 @@
             </div>
         </div>
     </div>
+    
+    <!-- 歌词显示 -->
+    <div id="masklyric">
+        <div id="lyricbox">
+            <div id="lyric">
+                
+            </div>
+        </div>
+    </div>
 
     <!--html结构模板-->
+
+    <!-- 歌词模板 -->
+    <script id="lyrictem" type="text/html">
+        <%for(var i=0; i<data.length; i++){%>
+            <p><%=data[i].str%></p>
+        <%}%>
+    </script>
 
     <!--首页推荐菜单-->
     <script id="menutem" type="text/html">

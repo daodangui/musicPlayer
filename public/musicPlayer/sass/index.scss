@@ -137,6 +137,14 @@ html,body{
               margin-right: 10px;
             }
           }
+          &>div:nth-child(2){
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            left: 0px;
+            right: 0px;
+            margin: auto;
+          }
           &>div:last-child{
             position: relative;
             float: right;
@@ -591,6 +599,31 @@ html,body{
           color: white;
         }
       }
+    }
+  }
+}
+//歌词部分
+#masklyric{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  left: 0px;
+  top: 0px;
+  background-color: rgba(0,0,0,0.9);
+  display: none;
+  justify-content: center;
+  color: #eee;
+  #lyricbox{
+    width: 600px;
+    text-align: center;
+    height: 100%;
+    #lyric{
+      letter-spacing: 6px;
+      font-size: 16px;
+      line-height: 30px;
+      position: relative;
+      top: 300px;
     }
   }
 }

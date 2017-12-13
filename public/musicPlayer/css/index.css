@@ -143,6 +143,14 @@ html, body {
 .pageheart #head #player .player .controls > div:first-child i {
   margin-right: 10px;
 }
+.pageheart #head #player .player .controls > div:nth-child(2) {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+}
 .pageheart #head #player .player .controls > div:last-child {
   position: relative;
   float: right;
@@ -604,6 +612,31 @@ html, body {
   font-size: 18px;
   cursor: pointer;
   color: white;
+}
+
+#masklyric {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  left: 0px;
+  top: 0px;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+  justify-content: center;
+  color: #eee;
+}
+#masklyric #lyricbox {
+  width: 600px;
+  text-align: center;
+  height: 100%;
+}
+#masklyric #lyricbox #lyric {
+  letter-spacing: 6px;
+  font-size: 16px;
+  line-height: 30px;
+  position: relative;
+  top: 300px;
 }
 
 @keyframes turntable {
